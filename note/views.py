@@ -31,7 +31,7 @@ def index(request):
     host = request.get_host()
     
     
-    return HttpResponse(db['NAME'] + '\n\n Go to: <a href="'+ host + '/api/' +'">API</a>')
+    return HttpResponse(db['NAME'] + '\n\r Go to: <a href="'+ host + '/api/' +'">API</a>')
 
 
 class NoteViewSet(viewsets.ModelViewSet):
