@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from rest_framework.parsers import FormParser, FileUploadParser
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
+from NoteServer import settings
 
 @csrf_exempt
 def note_list(request):
@@ -55,7 +56,9 @@ def note_list(request):
 #         return Response(serializer.data)
 
 def index(request):
-    return HttpResponse('HELLO')
+    db = settings.DATABASES['default']
+
+    return HttpResponse(db['NAME'] + '\n\n Go to: <a href="http://127.0.0.1:8000/api/">API</a>')
 
 
 class NoteViewSet(viewsets.ModelViewSet):
