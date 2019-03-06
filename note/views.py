@@ -58,8 +58,8 @@ class NoteViewSet(viewsets.ModelViewSet):
         note.save()
         
         image = data['image']
-        files = {'file': open(note.image.path, 'rb')}
-        response = requests.post(url='http://rinnguyen.pythonanywhere.com/api/faces/new/', data=post_data)
+        files = {'image': open(note.image.path, 'rb')}
+        response = requests.post(url='http://rinnguyen.pythonanywhere.com/api/faces/new/', files=files)
         content = response.content
         
         
