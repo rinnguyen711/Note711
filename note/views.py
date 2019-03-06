@@ -47,19 +47,22 @@ class NoteViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(methods=['post'], detail=False)
-    def new(self, request):
-        serializer = NoteSerializer(data=request.data)
+    def new(self, request)
         
         data = request.data
+        
+        note = Note()
+        note.title = data['title']
+        note.msg = data['msg']
+        note.image = data['image']
+        note.save()
+        
         image = data['image']
-        post_data = {'image': image}
+        files = {'file': open(note.image.path, 'rb')}
         response = requests.post(url='http://rinnguyen.pythonanywhere.com/api/faces/new/', data=post_data)
         content = response.content
         
         
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
         return Response(content)
 
 
