@@ -47,7 +47,7 @@ class NoteViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(methods=['post'], detail=False)
-    def new(self, request)
+    def new(self, request):
         
         data = request.data
         
