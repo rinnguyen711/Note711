@@ -78,12 +78,15 @@ WSGI_APPLICATION = 'NoteServer.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+   'default': {
+      'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dbmjmjbi001h7a',
+        'USER': 'ybxpmjpjsfgxzk',
+        'PASSWORD': '4f5d0fb0734efbe9b87e9759de4cca772d1caf2a7e1d878b391e1d5c662994bb',
+        'HOST': 'ec2-54-163-234-88.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
