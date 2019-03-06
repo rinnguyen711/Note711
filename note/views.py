@@ -28,8 +28,10 @@ def note_list(request):
 
 def index(request):
     db = settings.DATABASES['default']
-
-    return HttpResponse(db['NAME'] + '\n\n Go to: <a href="http://127.0.0.1:8000/api/">API</a>')
+    host = request.get_host()
+    
+    
+    return HttpResponse(db['NAME'] + '\n\n Go to: <a href="'+ host + '/api/' +'">API</a>')
 
 
 class NoteViewSet(viewsets.ModelViewSet):
