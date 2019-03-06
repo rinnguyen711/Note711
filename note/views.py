@@ -26,35 +26,6 @@ def note_list(request):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
-
-# class NoteViewSet2(viewsets.ModelViewSet, APIView):
-#     queryset = Note.objects.all()
-#     serializer_class = NoteSerializer
-#     print("HELLO")
-#     parser_classes = (FormParser, FileUploadParser)
-#
-#     def create(self, request):
-#         data = request.data
-#         print(data)
-#         serializer = NoteSerializer(data=data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return JsonResponse(serializer.data, status=201)
-#         return JsonResponse(serializer.errors, status=400)
-#
-#     def list(self, request):
-#         serializer = NoteSerializer(self.queryset, many=True)
-#         return Response(serializer)
-
-#
-# class NoteViewSet(viewsets.ViewSet):
-#
-#     def list(self, request):
-#         queryset = Note.objects.all()
-#         serializer = NoteSerializer(queryset, many=True)
-#         print(serializer.data)
-#         return Response(serializer.data)
-
 def index(request):
     db = settings.DATABASES['default']
 
