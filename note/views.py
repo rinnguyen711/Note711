@@ -10,6 +10,7 @@ from rest_framework.parsers import FormParser, FileUploadParser
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
 from NoteServer import settings
+import requests
 
 @csrf_exempt
 def note_list(request):
@@ -48,11 +49,18 @@ class NoteViewSet(viewsets.ModelViewSet):
     @action(methods=['post'], detail=False)
     def new(self, request):
         serializer = NoteSerializer(data=request.data)
-        print("DATA:")
+        
+        data = request.data
+        image = data['image']
+        post_data = {'image': image}
+        response = requests.post(url='http://rinnguyen.pythonanywhere.com/api/faces/new/', data=post_data)
+        content = response.content
+        
+        
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.data)
+        return Response(content)
 
 
 
